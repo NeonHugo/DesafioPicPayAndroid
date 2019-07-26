@@ -41,6 +41,7 @@
     <!-- Act004 -->
     <string name="transfer_mastercard">MasterCard %1$s</string>
     <string name="transfer_error_send_title">Erro na Transação!</string>
+    <string name="transfer_error_send_refused">Transferência não foi aprovada!</string>
     <string name="transfer_error_send">Não Foi Possível Efetuar a Transferência!</string>
     <string name="transfer_btn_pay">Pagar</string>
 

@@ -1,6 +1,9 @@
 package com.picpay.tools
 
-import java.text.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
@@ -216,15 +219,6 @@ fun isValidPhone(phone: String): Boolean {
 
 }
 
-fun isValidSignedDecimal(sDecimal: String): Boolean {
-    return try {
-        sDecimal.toDouble()
-        true
-    } catch (e: Exception) {
-        false
-    }
-}
-
 fun isValidNumber(value: String): Boolean {
     val tValue = value.toUpperCase().replace("[^0123456789]".toRegex(), "_")
 
@@ -313,10 +307,6 @@ fun creditCardLastNumbers(creditCardNumber: String): String {
 }
 
 fun formatValue(typedBackSpace: Boolean, txt: String): String {
-    var ff = DecimalFormatSymbols.getInstance().decimalSeparator
-    var cr = NumberFormat.getCurrencyInstance().currency
-    var st = cr.symbol
-
     var mTxt = txt
     mTxt = mTxt.replace(",", "")
     mTxt = mTxt.replace(".", "")
@@ -341,43 +331,6 @@ fun formatValue(typedBackSpace: Boolean, txt: String): String {
     }
 
     aux = java.lang.Double.parseDouble(msg)
-    msg = df.format(aux)
-    return msg
-        .replace(".", "#")
-        .replace(",", ".")
-        .replace("#", ",")
-
-}
-
-fun formatValueClean(typedBackSpace: Boolean, txt: String): String {
-    var ff = DecimalFormatSymbols.getInstance().decimalSeparator
-    var cr = NumberFormat.getCurrencyInstance().currency
-    var st = cr.symbol
-
-    var mTxt = txt
-    mTxt = mTxt.replace(",", "")
-    mTxt = mTxt.replace(".", "")
-
-    if (typedBackSpace) {
-        if (mTxt.length < 0) {
-            mTxt.subSequence(0, mTxt.length - 1)
-        }
-    }
-    val df = DecimalFormat("###,###,##0.00")
-    var aux = 0.00
-    var msg = "0.00"
-
-    if (mTxt.length == 1) {
-        msg = "0.0$mTxt"
-    }
-    if (mTxt.length == 2) {
-        msg = "0.$mTxt"
-    }
-    if (mTxt.length > 2) {
-        msg = mTxt.substring(0, mTxt.length - 2) + "." + mTxt.substring(mTxt.length - 2)
-    }
-
-    aux = msg.toDouble()
     msg = df.format(aux)
     return msg
 }
@@ -423,14 +376,6 @@ fun subTxT(txt: String): String {
     }
 
     return ""
-}
-
-fun convertDouble(value: String): Double {
-    return try {
-        value.toDouble()
-    } catch (ex: Exception) {
-        0.0
-    }
 }
 
 fun timeStampToDateTime(

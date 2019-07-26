@@ -2,7 +2,6 @@ package com.picpay
 
 import com.picpay.tools.currencyFormatFromScreen
 import com.picpay.tools.currencyFormatToScreen
-import com.picpay.tools.formatValueClean
 import com.picpay.tools.timeStampToDateTime
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -35,16 +34,6 @@ class ValidationFunctionsUnitTest {
         assertEquals(
             "19/07/2019 12:11",
             timeStampToDateTime(timestamp)
-        )
-    }
-
-    @Test
-    fun formatValueClean_isCorrect() {
-        val amount = "3.333,33"
-
-        assertEquals(
-            "3,333.33",
-            formatValueClean(false, amount)
         )
     }
 

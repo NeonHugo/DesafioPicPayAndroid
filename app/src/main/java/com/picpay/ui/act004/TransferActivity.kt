@@ -34,6 +34,7 @@ import com.picpay.ui.act003.CreditCardFormActivity
 import com.picpay.widget.setSafeOnClickListener
 import kotlinx.android.synthetic.main.transfer_activity.*
 import kotlinx.android.synthetic.main.transfer_content.*
+import java.text.NumberFormat
 import javax.inject.Inject
 
 
@@ -67,6 +68,12 @@ class TransferActivity : BaseActivity() {
         super.initVars()
 
         mGlide = Glide.with(this)
+        transfer_tv_currency.text = NumberFormat.getCurrencyInstance().currency.symbol
+        transfer_et_value.setText(
+            currencyFormatToScreen(
+                "0.0"
+            )
+        )
 
         setHeader()
         recoverParameters()
@@ -144,10 +151,8 @@ class TransferActivity : BaseActivity() {
             env.cvv = mCreditCard.cvv
             env.expiry_date = mCreditCard.expirationDate
             env.destination_user_id = mPeople.id
-            env.value = convertDouble(
-                formatValueClean(
-                    false, transfer_et_value.text.toString()
-                )
+            env.value = currencyFormatFromScreen(
+                transfer_et_value.text.toString()
             )
 
             mTransferActivityViewModel.saveCreditCardUseCase(
@@ -161,7 +166,16 @@ class TransferActivity : BaseActivity() {
             transfer_et_value.text.toString()
         )
 
-        transfer_btn_pay.isEnabled = value > 0.0
+        if (value > 0) {
+            transfer_btn_pay.isEnabled = true
+            transfer_tv_currency.setTextColor(getColor(R.color.colorPicPayGreen))
+            transfer_et_value.setTextColor(getColor(R.color.colorPicPayGreen))
+        } else {
+            transfer_btn_pay.isEnabled = false
+            transfer_tv_currency.setTextColor(getColor(R.color.colorPicPayGrayLight))
+            transfer_et_value.setTextColor(getColor(R.color.colorPicPayGrayLight))
+
+        }
     }
 
     private fun processPeopleGet(people: People?) {
@@ -189,19 +203,23 @@ class TransferActivity : BaseActivity() {
         val resultsFrame = TransactionFragment()
         val resultsBundle = Bundle()
 
-        transaction?.creditCardNumber = mCreditCard.creditCardNumber
+        if (transaction?.success!!) {
 
-        resultsBundle.putSerializable("key", transaction)
+            transaction.creditCardNumber = mCreditCard.creditCardNumber
 
-        resultsFrame.setOnNavFragListener(object : TransactionFragment.NavFragListener {
-            override fun onCloseFragment() {
-                callPeopleListActivity(Bundle())
-            }
-        })
-        resultsFrame.arguments = resultsBundle
-        resultsFrame.show(supportFragmentManager, "transaction_dialog")
+            resultsBundle.putSerializable("key", transaction)
 
-        //TransactionFragment().show(supportFragmentManager, "transaction_dialog")
+            resultsFrame.setOnNavFragListener(object : TransactionFragment.NavFragListener {
+                override fun onCloseFragment() {
+                    callPeopleListActivity(Bundle())
+                }
+            })
+
+            resultsFrame.arguments = resultsBundle
+            resultsFrame.show(supportFragmentManager, "transaction_dialog")
+        } else {
+            showResults(R.string.transfer_error_send_title, R.string.transfer_error_send_refused)
+        }
     }
 
     private fun processFailure(errorSendResouce: Int) {
