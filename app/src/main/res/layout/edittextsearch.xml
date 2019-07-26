@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/edittextsearch_ll_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/edittextsearch_et_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@null"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textColor="@color/colorPicPayGrayLight"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/ic_magnifying_glass"
+            android:drawableRight="@drawable/ic_backspace_24dp" />
+
+    </LinearLayout>
+</merge>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:showIn="@layout/transfer_activity"
+            tools:context=".ui.act004.TransferActivity"
+            android:fillViewport="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:src="@mipmap/ic_launcher_round"
+                android:id="@+id/transfer_iv_photo"
+                app:riv_oval="true"
+        />
+
+        <TextView
+                android:id="@+id/transfer_tv_name"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="\@zelda.willinas"
+                android:textColor="@color/colorPicPayWhite"
+                android:textStyle="bold"
+        />
+
+
+        <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/transfer_tv_currency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R$"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorPicPayGrayLight"
+                    android:layout_marginRight="20dp"
+            />
+
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:gravity="center"
+                    android:text="0,00"
+                    android:background="#00000000"
+                    android:id="@+id/transfer_et_value"
+                    android:contentDescription="Preco"
+                    android:textSize="40sp"
+                    android:cursorVisible="false"
+                    android:textColor="@color/colorPicPayGrayLight"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/transfer_tv_cn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MasterCard 1212"
+                    android:textColor="@color/colorPicPayWhite"
+                    android:textStyle="bold"
+            />
+
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/colorPicPayWhite"
+                    android:textStyle="bold"
+            />
+            <TextView
+                    android:id="@+id/transfer_tv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPicPayGreen"
+                    android:textStyle="bold"
+            />
+
+        </LinearLayout>
+
+
+        <View android:layout_width="1dp"
+              android:layout_height="0dp"
+              android:layout_weight="1"/>
+
+        <Button
+                style="@style/PicPay.PrimaryButton"
+                android:layout_marginTop="50dp"
+                android:id="@+id/transfer_btn_pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/transfer_btn_pay"/>
+
+    </LinearLayout>
+
+</ScrollView>

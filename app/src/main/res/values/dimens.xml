@@ -1,0 +1,14 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="peoplelista_adapter_cell_nick">25sp</dimen>
+    <dimen name="peoplelista_adapter_cell_name">16sp</dimen>
+    <dimen name="peoplelista_adapter_cell_space">15dp</dimen>
+
+    <dimen name="page_header_title_space">40sp</dimen>
+    <dimen name="message_h2_space">32sp</dimen>
+    <dimen name="message_h3_space">24sp</dimen>
+
+    <dimen name="text_content_space">20sp</dimen>
+    <dimen name="btn_text_space">24sp</dimen>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF17181A</color>
+    <color name="colorPrimaryDark">#FF262627</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorPicPayBlack">#FF000000</color>
+    <color name="colorPicPayGray">#FF353538</color>
+    <color name="colorPicPayGrayDark">#17181A</color>
+    <color name="colorPicPayGrayLight">#FF93939B</color>
+    <color name="colorPicPayRed">#FFFF0000</color>
+    <color name="colorPicPayGreen">#21B367</color>
+    <color name="colorPicPayGreenDark">#0E6D3A</color>
+    <color name="colorPicPayWhite">#FFFFFFFF</color>
+
+    <color name="colorPicPayBlue">#FF0000FF</color>
+    <color name="colorPicPayYellow">#FFFFFF00</color>
+
+    <color name="error_color">@color/colorPicPayRed</color>
+    <color name="hint_color_active">@color/colorPicPayGreen</color>
+    <color name="hint_color_inactive">@color/colorPicPayGrayLight</color>
+
+</resources>

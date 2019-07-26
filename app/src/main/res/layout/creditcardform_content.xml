@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:background="@color/colorPicPayWhite"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:showIn="@layout/creditcardform_activity"
+            tools:context=".ui.act003.CreditCardFormActivity"
+            android:fillViewport="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                android:text="@string/creditcardaform_header_title"
+                android:textStyle="bold"
+                tools:textColor="@color/colorPicPayBlack"
+                style="@style/MyStyleHeaderF.TextView"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="30dp"
+                android:id="@+id/creditcardform_ti_nc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextInputLayoutAppearance"
+                android:hint="@string/creditcardaform_et_nc">
+
+            <com.picpay.widget.TextInputEditTextCustom
+                    android:id="@+id/creditcardform_et_nc"
+                    android:enabled="true"
+                    android:text=""
+                    app:mRequired="true"
+                    app:mFieldType="CREDIT_CARD"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/MyTheme.EditText"
+                    style="@style/MyStyle.EditText"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="30dp"
+                android:id="@+id/creditcardform_ti_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextInputLayoutAppearance"
+                android:hint="@string/creditcardaform_et_name">
+
+            <com.picpay.widget.TextInputEditTextCustom
+                    android:id="@+id/creditcardform_et_name"
+                    android:text=""
+                    app:mRequired="true"
+                    app:mFieldType="CHAR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/MyTheme.EditText"
+                    style="@style/MyStyle.EditText"
+            />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/creditcardform_ti_expiration_date"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputLayoutAppearance"
+                    android:hint="@string/creditcardaform_et_expiration_date">
+
+                <com.picpay.widget.TextInputEditTextCustom
+                        android:id="@+id/creditcardform_et_expiration_date"
+                        android:text=""
+                        app:mRequired="true"
+                        app:mFieldType="EXPIRATION_DATE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MyTheme.EditText"
+                        style="@style/MyStyle.EditText"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/creditcardform_ti_cvv"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputLayoutAppearance"
+                    android:hint="@string/creditcardaform_et_cvv">
+
+                <com.picpay.widget.TextInputEditTextCustom
+                        android:id="@+id/creditcardform_et_cvv"
+                        android:text=""
+                        app:mRequired="true"
+                        app:mFieldType="CHAR_NUMBER"
+                        app:mMask="###"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/MyTheme.EditText"
+                        style="@style/MyStyle.EditText"
+                />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <View android:layout_width="1dp"
+              android:layout_height="0dp"
+              android:layout_weight="1"/>
+
+        <Button
+                style="@style/PicPay.PrimaryButton"
+                android:layout_marginTop="50dp"
+                android:id="@+id/creditcardform_btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/creditcardaform_btn_save"/>
+
+    </LinearLayout>
+
+</ScrollView>

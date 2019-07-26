@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">PicPay</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="service_channel">PicPay Service Channel</string>
+
+    <string name="sys_label_btn_cancel">Cancel</string>
+    <string name="sys_label_btn_ok">Ok</string>
+
+    <!-- Act001 -->
+    <string name="people_list_header_title">Contatos</string>
+    <string name="people_list_search_hint">A quem deseja pagar?</string>
+
+    <string name="text_input_edit_text_custom_error_no_value">Sem valor</string>
+    <string name="text_input_edit_text_custom_error_invalid_cpf">CPF Inválido</string>
+    <string name="text_input_edit_text_custom_error_invalid_cnpj">CNPJ Inválido</string>
+    <string name="text_input_edit_text_custom_error_invalid_phone">Telefone Inválido</string>
+    <string name="text_input_edit_text_custom_error_invalid_cep">CEP Inválido</string>
+    <string name="text_input_edit_text_custom_error_invalid_date">Data Inválida</string>
+    <string name="text_input_edit_text_custom_error_invalid_expiration_date">Data de Vencimento Inválida</string>
+    <string name="text_input_edit_text_custom_error_invalid_hour">Hora Inválida</string>
+    <string name="text_input_edit_text_custom_error_invalid_credit_card">Cartão de Crédito Inválido</string>
+    <string name="text_input_edit_text_custom_error_invalid_mask">Inválido</string>
+
+    <string name="creditcardadd_message_h2">Cadastre um Cartão \nde Crédito</string>
+    <string name="creditcardadd_description_h3">Para fazer pagamentos para outras pessoas você precisa cadastrar um cartão de crédito pessoal.</string>
+    <string name="creditcardadd_btn_new">Cadastrar Cartão</string>
+
+    <!-- Act003 -->
+    <string name="creditcardaform_header_title">Cadastrar Cartão</string>
+    <string name="creditcardaform_et_nc">Número do Cartão</string>
+    <string name="creditcardaform_et_name">Nome do Titular</string>
+    <string name="creditcardaform_et_expiration_date">Vencimento</string>
+    <string name="creditcardaform_et_cvv">CVV</string>
+    <string name="creditcardaform_btn_save">Salvar</string>
+
+    <string name="creditcardaform_error_save_title">Erro ao Salvar o Cartão!</string>
+    <string name="creditcardaform_error_save">Não Foi Possível Salvar o Cartão!</string>
+
+
+    <!-- Act004 -->
+    <string name="transfer_mastercard">MasterCard %1$s</string>
+    <string name="transfer_error_send_title">Erro na Transação!</string>
+    <string name="transfer_error_send">Não Foi Possível Efetuar a Transferência!</string>
+    <string name="transfer_btn_pay">Pagar</string>
+
+    <string name="transactionfragment_title">Recibo</string>
+    <string name="transactionfragment_transaction">Transação %1$s</string>
+    <string name="transactionfragment_mastercard">Cartão Master %1$s</string>
+    <!--&lt;!&ndash; LIXO &ndash;&gt;-->
+
+    <!--<string name="firstname">Firtname</string>-->
+    <!--<string name="lastname">Lastname</string>-->
+    <!--<string name="password">Password</string>-->
+    <!--<string name="password_again">Password Again</string>-->
+    <!--<string name="email">Email</string>-->
+    <!--<string name="birthday">Birthday</string>-->
+    <!--<string name="gender">Gender : </string>-->
+    <!--<string name="male">Male</string>-->
+    <!--<string name="female">Female</string>-->
+    <!--<string name="register">Register</string>-->
+    <!--<string name="register_form_text">You need to fill up below register form.</string>-->
+    <!--<string name="no_field_can_be_empty">No field can be empty</string>-->
+    <!--<string name="passwords_must_be_the_same">Password and password again field must be the same</string>-->
+    <!--<string name="here_is_values">Here is values: %1$s</string>-->
+
+</resources>

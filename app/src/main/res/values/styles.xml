@@ -1,0 +1,107 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="MyStyle.InputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="errorTextAppearance">@style/ErrorTextAppearance</item>
+        <item name="colorAccent">@color/colorPicPayGreen</item>
+    </style>
+
+    <style name="ErrorTextAppearance" parent="TextAppearance.Design.Error">
+        <!-- Error text color-->
+        <item name="android:textColor">@color/error_color</item>
+    </style>
+
+    <style name="Message.EditText" parent="Theme.AppCompat.Light">
+        <item name="android:gravity">center</item>
+
+        <!-- Style -->
+        <item name="android:textStyle">bold</item>
+
+        <!-- Color -->
+        <item name="android:textColor">@color/colorPicPayWhite</item>
+
+        <!-- Size -->
+        <item name="android:textSize">@dimen/message_h2_space</item>
+    </style>
+
+    <style name="Description.EditText" parent="Theme.AppCompat.Light">
+        <item name="android:gravity">center</item>
+
+        <!-- Color -->
+        <item name="android:textColor">@color/colorPicPayGrayLight</item>
+
+        <!-- Size -->
+        <item name="android:textSize">@dimen/message_h3_space</item>
+    </style>
+
+
+    <style name="PicPay.PrimaryButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/colorPicPayWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_primary_main_states</item>
+        <item name="android:textSize">@dimen/btn_text_space</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="hintTextAppearance">@style/HintTextAppearance</item>
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:textColorHint">@color/colorPicPayGrayLight</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textSize">@dimen/message_h3_space</item>
+
+        <item name="android:textColor">@color/colorPicPayRed</item>
+    </style>
+
+    <style name="HintTextAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Inactive and Active label color, pointing to a selector-->
+        <item name="android:textColor">@color/colorPicPayGreen</item>
+    </style>
+
+    <!-- EditText - Ok -->
+    <style name="MyTheme.EditText" parent="Theme.AppCompat.Light">
+        <!-- Inactive underline color-->
+        <item name="colorControlNormal">@color/colorPicPayGrayLight</item>
+        <item name="colorControlActivated">@color/colorPicPayGreen</item>
+    </style>
+
+    <style name="MyStyle.EditText" parent="Theme.AppCompat.Light">
+        <!-- Text color-->
+        <item name="android:textColor">@color/colorPicPayWhite</item>
+        <item name="android:textSize">@dimen/text_content_space</item>
+    </style>
+
+    <style name="MyStyleHeader.TextView" parent="Theme.AppCompat.Light">
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:textSize">@dimen/page_header_title_space</item>
+        <item name="android:textColor">@color/colorPicPayWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MyStyleHeaderF.TextView" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">@dimen/page_header_title_space</item>
+        <item name="android:textColor">@color/colorPicPayWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

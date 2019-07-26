@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GlobalAttrDeclare">
+        <attr name="mRequired" format="boolean"/>
+        <attr name="mInputType" format="string" localization="suggested"/>
+        <attr name="mMask" format="string" localization="suggested"/>
+        <attr name="mErrorMSG" format="string" localization="suggested"/>
+    </declare-styleable>
+
+    <attr name="mFieldType">
+        <enum name="CHAR" value="0"/>
+        <enum name="CHAR_NUMBER" value="1"/>
+        <enum name="CPF" value="2"/>
+        <enum name="CNPJ" value="3"/>
+        <enum name="PHONE" value="4"/>
+        <enum name="CEP" value="5"/>
+        <enum name="DATE" value="6"/>
+        <enum name="EXPIRATION_DATE" value="7"/>
+        <enum name="HOUR" value="8"/>
+        <enum name="CREDIT_CARD" value="9"/>
+    </attr>
+
+    <declare-styleable name="EditTextSearch">
+        <attr name="mHint"/>
+        <attr name="mValue"/>
+        <attr name="mEnabled"/>
+    </declare-styleable>
+
+    <declare-styleable name="TextInputEditTextCustom">
+        <attr name="mRequired"/>
+        <attr name="mFieldType"/>
+        <attr name="mInputType"/>
+        <attr name="mMask"/>
+        <attr name="mErrorMSG"/>
+    </declare-styleable>
+
+</resources>
