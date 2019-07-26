@@ -98,11 +98,9 @@ class TextInputEditTextCustom : TextInputEditText {
     private fun cfgType() {
         when (mFieldType) {
             FieldType.CHAR -> {
-                //mMask = FORMAT_EMPTY
                 inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
             }
             FieldType.CHAR_NUMBER -> {
-                //mMask = FORMAT_EMPTY
                 inputType = InputType.TYPE_CLASS_NUMBER
             }
             FieldType.CPF -> {

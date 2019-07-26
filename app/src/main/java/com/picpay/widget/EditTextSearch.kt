@@ -69,6 +69,14 @@ class EditTextSearch : LinearLayout {
 
         ll_background = findViewById<LinearLayout>(R.id.edittextsearch_ll_background)
         et_value = findViewById(R.id.edittextsearch_et_value)
+        et_value?.setTextColor(context.getColor(R.color.colorPicPayWhite))
+        et_value?.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus){
+                ll_background?.setBackgroundResource(R.drawable.border_on)
+            } else {
+                ll_background?.setBackgroundResource(R.drawable.border_off)
+            }
+        }
 
     }
 
@@ -172,7 +180,7 @@ class EditTextSearch : LinearLayout {
 
     private fun setRightIconVisibility(et_search: EditText, bStatus: Boolean) {
         if (bStatus) {
-            val x = resources.getDrawable(R.drawable.ic_backspace_24dp)
+            val x = resources.getDrawable(R.drawable.ic_clear_black_24dp)
 
             x.setBounds(0, 0, x.intrinsicWidth, x.intrinsicHeight)
 
