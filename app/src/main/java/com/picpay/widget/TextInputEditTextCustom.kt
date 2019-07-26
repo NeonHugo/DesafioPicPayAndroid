@@ -244,15 +244,15 @@ class TextInputEditTextCustom : TextInputEditText {
                 }
             }
             else -> {
-                return true
-            }
-        }
+                if (mMask.isNotEmpty()) {
+                    if (!isValidMask(mMask, text.toString())) {
+                        mErrorMSG = context.getString(R.string.text_input_edit_text_custom_error_invalid_mask)
 
-        if (mMask.isNotEmpty()) {
-            if (!isValidMask(mMask, text.toString())) {
-                mErrorMSG = context.getString(R.string.text_input_edit_text_custom_error_invalid_mask)
-
-                return false
+                        return false
+                    }
+                } else {
+                    return true
+                }
             }
         }
 
