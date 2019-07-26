@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.os.SystemClock
 import com.picpay.R
 import com.picpay.base.BaseActivity
 import com.picpay.ui.act001.PeopleListActivity
 import com.picpay.ui.act003.CreditCardFormActivity
+import com.picpay.widget.setSafeOnClickListener
 import kotlinx.android.synthetic.main.creditcardadd_activity.*
 import kotlinx.android.synthetic.main.creditcardadd_content.*
 
@@ -39,11 +39,7 @@ class CreditCardAddActivity : BaseActivity() {
     override fun initActions() {
         super.initActions()
 
-        creditcardadd_btn_new.setOnClickListener {
-            if (SystemClock.elapsedRealtime() - mLastClickTime < 500) {
-                return@setOnClickListener
-            }
-
+        creditcardadd_btn_new.setSafeOnClickListener {
             callCreditCardFormActivity(bundle)
         }
     }
