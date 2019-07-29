@@ -70,20 +70,15 @@ class TextInputEditTextCustom : TextInputEditText {
         var old = ""
 
         override fun afterTextChanged(editable: Editable?) {
-            removeTextChangedListener(this)
-
-            val result = if (mMask.isNotEmpty()) {
-                sMask(unMask(editable.toString()), unMask(old))
-            } else {
-                editable.toString()
-            }
-
             if (mMask.isNotEmpty()) {
+                removeTextChangedListener(this)
+
+                val result = sMask(unMask(editable.toString()), unMask(old))
                 setText(result)
                 setSelection(result.length)
-            }
 
-            addTextChangedListener(this)
+                addTextChangedListener(this)
+            }
         }
 
         override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {
@@ -160,17 +155,6 @@ class TextInputEditTextCustom : TextInputEditText {
         }
 
         return result
-    }
-
-    private fun unMask(value: String): String {
-        return value
-            .replace("[.]".toRegex(), "")
-            .replace("[-]".toRegex(), "")
-            .replace("[/]".toRegex(), "")
-            .replace("[(]".toRegex(), "")
-            .replace("[)]".toRegex(), "")
-            .replace("[:]".toRegex(), "")
-            .replace("[ ]".toRegex(), "")
     }
 
     fun isValid(): Boolean {

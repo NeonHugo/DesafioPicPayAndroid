@@ -1,5 +1,6 @@
 package com.picpay.tools
 
+import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.ParseException
@@ -12,7 +13,7 @@ import java.util.regex.Pattern
 */
 fun isValidCPF(xCPF: String): Boolean {
     var cpf = xCPF
-    cpf = unmask(cpf)
+    cpf = unMask(cpf)
     return if (
         cpf != "00000000000" &&
         cpf != "11111111111" &&
@@ -79,7 +80,7 @@ fun isValidCPF(xCPF: String): Boolean {
 
 fun isValidCNPJ(xCNPJ: String): Boolean {
     var cnpj = xCNPJ
-    cnpj = unmask(cnpj)
+    cnpj = unMask(cnpj)
     return if (
         cnpj != "00000000000000" &&
         cnpj != "11111111111111" &&
@@ -181,7 +182,7 @@ fun isValidEmailAddress(emailAddress: String): Boolean {
 
 fun isValidCep(CEP: String): Boolean {
 
-    val sCep = unmask(CEP)
+    val sCep = unMask(CEP)
 
     try {
         if (sCep.length != 8) {
@@ -198,7 +199,7 @@ fun isValidCep(CEP: String): Boolean {
 }
 
 fun isValidPhone(phone: String): Boolean {
-    val sPhone = unmask(phone).replace(" ", "")
+    val sPhone = unMask(phone).replace(" ", "")
 
     try {
 
@@ -229,7 +230,7 @@ fun isValidNumber(value: String): Boolean {
 }
 
 fun isValidCreditCard(value: String): Boolean {
-    val creditCard = unmask(value)
+    val creditCard = unMask(value)
 
     if (creditCard.length != 16) {
         return false
@@ -277,15 +278,25 @@ fun isValidExpirationDate(expirationDate: String): Boolean {
 }
 
 
-fun unmask(value: String): String {
+fun creditCardLastNumbers(creditCardNumber: String): String {
+    val parts = creditCardNumber.split(" ")
+
+    return try {
+        val ccn = unMask(creditCardNumber)
+
+        if (ccn.length != 16){
+            return ""
+        }
+
+        ccn.substring(ccn.length-4)
+    } catch (ex: Exception) {
+        ""
+    }
+}
+
+fun unMask(value: String): String {
     return value
-        .replace("[.]".toRegex(), "")
-        .replace("[-]".toRegex(), "")
-        .replace("[/]".toRegex(), "")
-        .replace("[(]".toRegex(), "")
-        .replace("[)]".toRegex(), "")
-        .replace("[:]".toRegex(), "")
-        .replace("[ ]".toRegex(), "")
+        .replace("[\\s,.;,.,,.\\-,.:,.(,.),./]".toRegex(), "")
 }
 
 fun isValidMask(mask: String, str: String): Boolean {
@@ -296,48 +307,9 @@ fun isValidMask(mask: String, str: String): Boolean {
     return true
 }
 
-fun creditCardLastNumbers(creditCardNumber: String): String {
-    val parts = creditCardNumber.split(" ")
-
-    return try {
-        parts[3]
-    } catch (ex: Exception) {
-        ""
-    }
-}
-
-fun formatValue(typedBackSpace: Boolean, txt: String): String {
-    var mTxt = txt
-    mTxt = mTxt.replace(",", "")
-    mTxt = mTxt.replace(".", "")
-
-    if (typedBackSpace) {
-        if (mTxt.length < 0) {
-            mTxt.subSequence(0, mTxt.length - 1)
-        }
-    }
-    val df = DecimalFormat("#,##0.00")
-    var aux = 0.00
-    var msg = "0.00"
-
-    if (mTxt.length == 1) {
-        msg = "0.0$mTxt"
-    }
-    if (mTxt.length == 2) {
-        msg = "0.$mTxt"
-    }
-    if (mTxt.length > 2) {
-        msg = mTxt.substring(0, mTxt.length - 2) + "." + mTxt.substring(mTxt.length - 2)
-    }
-
-    aux = java.lang.Double.parseDouble(msg)
-    msg = df.format(aux)
-    return msg
-}
-
 fun currencyFormatToScreen(amount: String, includeSymbol: Boolean = false): String {
     val formatter = DecimalFormat("###,###,##0.00")
-    var crSymbol = NumberFormat.getCurrencyInstance().currency.symbol
+    val crSymbol = NumberFormat.getCurrencyInstance().currency.symbol
 
     return if (includeSymbol) {
         "$crSymbol ${formatter.format(java.lang.Double.parseDouble(amount))}"
@@ -347,35 +319,16 @@ fun currencyFormatToScreen(amount: String, includeSymbol: Boolean = false): Stri
 }
 
 fun currencyFormatFromScreen(amount: String): Double {
-    var crSymbol = NumberFormat.getCurrencyInstance().currency.symbol
+    val crSymbol = NumberFormat.getCurrencyInstance().currency.symbol
 
-    var mTxt = amount
-    mTxt = mTxt.replace(",", "")
-    mTxt = mTxt.replace(".", "")
-    mTxt = mTxt.replace(" ", "")
-    mTxt = mTxt.replace(crSymbol, "")
+    var cleanString = amount
+    cleanString = cleanString.replace("[\\s,.;,.,,.$crSymbol]".toRegex(), "")
 
-    var msg = "0.00"
+    val parsed = BigDecimal(cleanString)
+        .setScale(2, BigDecimal.ROUND_FLOOR)
+        .divide(BigDecimal(100), BigDecimal.ROUND_FLOOR)
 
-    if (mTxt.length == 1) {
-        msg = "0.0$mTxt"
-    }
-    if (mTxt.length == 2) {
-        msg = "0.$mTxt"
-    }
-    if (mTxt.length > 2) {
-        msg = mTxt.substring(0, mTxt.length - 2) + "." + mTxt.substring(mTxt.length - 2)
-    }
-
-    return msg.toDouble()
-}
-
-fun subTxT(txt: String): String {
-    if (txt.isNotEmpty()) {
-        return txt.substring(0, txt.length - 1)
-    }
-
-    return ""
+    return parsed.toDouble()
 }
 
 fun timeStampToDateTime(

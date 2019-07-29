@@ -1,9 +1,7 @@
 package com.picpay
 
-import com.picpay.tools.currencyFormatFromScreen
-import com.picpay.tools.currencyFormatToScreen
-import com.picpay.tools.timeStampToDateTime
-import org.junit.Assert.assertEquals
+import com.picpay.tools.*
+import org.junit.Assert.*
 import org.junit.Test
 import java.text.NumberFormat
 
@@ -53,12 +51,79 @@ class ValidationFunctionsUnitTest {
         val crSymbol = NumberFormat.getCurrencyInstance().currency.symbol
         val amount = "$crSymbol 3,333.33"
 
-        var res = currencyFormatFromScreen(amount)
-
         assertEquals(
             3333.33,
             currencyFormatFromScreen(amount),
             0.001
         )
     }
+
+    @Test
+    fun unmask_isCorrect() {
+        val value = "R$ 120.000,00-Hugo 12:00 ( -- )   hugo//();"
+
+        assertEquals(
+            "R$12000000Hugo1200hugo",
+            unMask(value)
+
+        )
+    }
+
+    @Test
+    fun isValidCreditCard_isCorrect() {
+        val creditCardNumber = "1111 2222 3333 4444"
+
+        assertTrue(
+            isValidCreditCard(creditCardNumber)
+        )
+    }
+
+    @Test
+    fun isValidCreditCard_isWrong() {
+        val creditCardNumber = "11112222333344445"
+
+        assertFalse(
+            isValidCreditCard(creditCardNumber)
+        )
+    }
+
+    @Test
+    fun isValidExpirationDate_isCorrect() {
+        val expirationDate = "12/56"
+
+        assertTrue(
+            isValidExpirationDate(expirationDate)
+        )
+    }
+
+    @Test
+    fun isValidExpirationDate_isWrong() {
+        val expirationDate = "12/18"
+
+        assertFalse(
+            isValidExpirationDate(expirationDate)
+        )
+    }
+
+    @Test
+    fun creditCardLastNumbers_isCorrect() {
+        val creditCardNumber = "1111 2222 3333 4444"
+
+        assertEquals(
+            "4444",
+            creditCardLastNumbers(creditCardNumber)
+        )
+    }
+
+    @Test
+    fun creditCardLastNumbers_isWrong() {
+        val creditCardNumber = "111122223333444"
+
+        assertEquals(
+            "",
+            creditCardLastNumbers(creditCardNumber)
+        )
+    }
+
+
 }

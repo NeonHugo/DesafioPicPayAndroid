@@ -28,7 +28,10 @@ import com.picpay.entity.People
 import com.picpay.factory.ViewModelFactory
 import com.picpay.model.TransactionEnv
 import com.picpay.model.TransactionReponse
-import com.picpay.tools.*
+import com.picpay.tools.creditCardLastNumbers
+import com.picpay.tools.currencyFormatFromScreen
+import com.picpay.tools.currencyFormatToScreen
+import com.picpay.tools.unMask
 import com.picpay.ui.act001.PeopleListActivity
 import com.picpay.ui.act003.CreditCardFormActivity
 import com.picpay.widget.setSafeOnClickListener
@@ -100,42 +103,29 @@ class TransferActivity : BaseActivity() {
         super.initActions()
 
         transfer_et_value.addTextChangedListener(object : TextWatcher {
-
-            var old = ""
-            var new = ""
-            var status: Boolean = false
+            var current = ""
 
             override fun afterTextChanged(s: Editable?) {
-                new = s.toString()
-                    .replace(",", "")
-                    .replace(".", "")
+                if (s.toString() != current) {
+                    transfer_et_value.removeTextChangedListener(this)
 
-                if (status) {
-                    status = false
+                    val parsed = currencyFormatFromScreen(s.toString())
 
-                    return
+                    current = currencyFormatToScreen(parsed.toString())
+
+                    transfer_et_value.setText(current)
+                    transfer_et_value.setSelection(current.length)
+
+                    transfer_et_value.addTextChangedListener(this)
                 }
-
-                if (old.length > new.length) {
-                    new = subTxT(old)
-                }
-
-                status = true
-
-                transfer_et_value.setText(formatValue(false, new))
-                transfer_et_value.setSelection(transfer_et_value.text.toString().length)
 
                 processFormValidation()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                old = s.toString()
-                    .replace(",", "")
-                    .replace(".", "")
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
             }
 
         })
@@ -147,7 +137,7 @@ class TransferActivity : BaseActivity() {
 
         transfer_btn_pay.setSafeOnClickListener {
             val env = TransactionEnv()
-            env.card_number = unmask(mCreditCard.creditCardNumber)
+            env.card_number = unMask(mCreditCard.creditCardNumber)
             env.cvv = mCreditCard.cvv
             env.expiry_date = mCreditCard.expirationDate
             env.destination_user_id = mPeople.id
