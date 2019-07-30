@@ -37,7 +37,6 @@
     <string name="creditcardaform_error_save_title">Erro ao Salvar o Cartão!</string>
     <string name="creditcardaform_error_save">Não Foi Possível Salvar o Cartão!</string>
 
-
     <!-- Act004 -->
     <string name="transfer_mastercard">MasterCard %1$s</string>
     <string name="transfer_error_send_title">Erro na Transação!</string>
@@ -48,21 +47,5 @@
     <string name="transactionfragment_title">Recibo</string>
     <string name="transactionfragment_transaction">Transação %1$s</string>
     <string name="transactionfragment_mastercard">Cartão Master %1$s</string>
-    <!--&lt;!&ndash; LIXO &ndash;&gt;-->
-
-    <!--<string name="firstname">Firtname</string>-->
-    <!--<string name="lastname">Lastname</string>-->
-    <!--<string name="password">Password</string>-->
-    <!--<string name="password_again">Password Again</string>-->
-    <!--<string name="email">Email</string>-->
-    <!--<string name="birthday">Birthday</string>-->
-    <!--<string name="gender">Gender : </string>-->
-    <!--<string name="male">Male</string>-->
-    <!--<string name="female">Female</string>-->
-    <!--<string name="register">Register</string>-->
-    <!--<string name="register_form_text">You need to fill up below register form.</string>-->
-    <!--<string name="no_field_can_be_empty">No field can be empty</string>-->
-    <!--<string name="passwords_must_be_the_same">Password and password again field must be the same</string>-->
-    <!--<string name="here_is_values">Here is values: %1$s</string>-->
 
 </resources>

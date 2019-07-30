@@ -8,6 +8,7 @@ import com.picpay.R
 import com.picpay.base.BaseActivity
 import com.picpay.ui.act001.PeopleListActivity
 import com.picpay.ui.act003.CreditCardFormActivity
+import com.picpay.widget.setSafeNavigationOnClickListener
 import com.picpay.widget.setSafeOnClickListener
 import kotlinx.android.synthetic.main.creditcardadd_activity.*
 import kotlinx.android.synthetic.main.creditcardadd_content.*
@@ -52,7 +53,7 @@ class CreditCardAddActivity : BaseActivity() {
         icon.setColorFilter(resources.getColor(R.color.colorPicPayGreen, null), PorterDuff.Mode.SRC_IN)
         toolbar?.navigationIcon = icon
 
-        toolbar?.setNavigationOnClickListener {
+        toolbar?.setSafeNavigationOnClickListener {
             onBackPressed()
         }
     }

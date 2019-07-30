@@ -34,6 +34,7 @@ import com.picpay.tools.currencyFormatToScreen
 import com.picpay.tools.unMask
 import com.picpay.ui.act001.PeopleListActivity
 import com.picpay.ui.act003.CreditCardFormActivity
+import com.picpay.widget.setSafeNavigationOnClickListener
 import com.picpay.widget.setSafeOnClickListener
 import kotlinx.android.synthetic.main.transfer_activity.*
 import kotlinx.android.synthetic.main.transfer_content.*
@@ -261,7 +262,7 @@ class TransferActivity : BaseActivity() {
         icon.setColorFilter(resources.getColor(R.color.colorPicPayGreen, null), PorterDuff.Mode.SRC_IN)
         toolbar?.navigationIcon = icon
 
-        toolbar?.setNavigationOnClickListener {
+        toolbar?.setSafeNavigationOnClickListener {
             onBackPressed()
         }
     }

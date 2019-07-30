@@ -2,6 +2,7 @@ package com.picpay.widget
 
 import android.os.SystemClock
 import android.view.View
+import androidx.appcompat.widget.Toolbar
 
 /*
 * Created By neomatrix on 2019-07-26
@@ -25,4 +26,11 @@ fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
         onSafeClick(it)
     }
     setOnClickListener(safeClickListener)
+}
+
+fun Toolbar.setSafeNavigationOnClickListener(onSafeClick: (View) -> Unit) {
+    val safeClickListener = SafeClickListener {
+        onSafeClick(it)
+    }
+    setNavigationOnClickListener(safeClickListener)
 }

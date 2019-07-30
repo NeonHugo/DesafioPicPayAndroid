@@ -24,6 +24,7 @@ import com.picpay.factory.ViewModelFactory
 import com.picpay.ui.act001.PeopleListActivity
 import com.picpay.ui.act004.TransferActivity
 import com.picpay.widget.TextInputEditTextCustom
+import com.picpay.widget.setSafeNavigationOnClickListener
 import com.picpay.widget.setSafeOnClickListener
 import kotlinx.android.synthetic.main.creditcardform_activity.*
 import kotlinx.android.synthetic.main.creditcardform_content.*
@@ -180,7 +181,7 @@ class CreditCardFormActivity : BaseActivity() {
         icon.setColorFilter(resources.getColor(R.color.colorPicPayGreen, null), PorterDuff.Mode.SRC_IN)
         toolbar?.navigationIcon = icon
 
-        toolbar?.setNavigationOnClickListener {
+        toolbar?.setSafeNavigationOnClickListener {
             onBackPressed()
         }
     }
